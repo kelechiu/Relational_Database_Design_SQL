@@ -101,6 +101,8 @@ INSERT INTO Customers VALUES
 * I assigned VARCHAR to the name and address because the length of the characters can vary.
 * NOT NULL constraint specifies that each restaurant must be associated with a Restaurant_ID and name.
 
+#### Table Population
+
 ``` mysql
 
 -- Populate Restaurants Table
@@ -119,3 +121,127 @@ INSERT INTO Restaurants VALUES
 ```
 
 <img width="203" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/8282eabc-d696-4587-ac80-2d7dccb99ea4">
+
+### 3.3.  Create 'Items' Table 
+<img width="207" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/df464c68-2877-41d3-b3bc-2d1ceff9cc8a">
+
+#### Data Types and Constraints
+* The Primary Key is Item_ID because it uniquely identifies each item in an order.
+* DECIMAL (8,2) specifies that the price column will have a maximum of 8 digits and set to 2 decimal points.
+* Item name and category are VARCHAR because their character length can vary.
+* The CHECK CONSTRAINT prevents zero or negative values by enforcing that Price contains values greater than 0.
+* NOT NULL constraint was used to ensure that certain columns like Item_ID, price and item_name are not left empty.
+
+#### Table Population
+
+``` mysql
+
+-- Populate Items Table
+INSERT INTO Items VALUES
+    (101, 'Burger', 8.9, 'Main Course'),
+    (102, 'Pizza', 12.99, 'Main Course'), 
+    (103, 'Water', 1.80, 'Drinks'),
+    (104, 'Fries', 12, 'Starter'),
+    (105, 'Chicken Wings', 7.3, 'Main Course'),
+    (106, 'Coke', 1.99, 'Drinks'),
+    (107, 'Steak', 8.90, 'Main Course'),
+    (108, 'Garlic Bread', 5.99, 'Starter'),
+    (109, 'Jollof Rice', 9.90, 'Main Course'),
+    (110, 'Asun', 5.8, 'Starter');
+
+```
+
+<img width="161" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/a8d66e05-cbf9-4b2e-9489-5c9d2b225dc4">
+
+### 3.4.  Create 'Manager' Table 
+
+<img width="175" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/68e40e14-c836-433f-9db7-86a76b3fe7f4">
+
+#### Data Types and Constraints
+* The Primary Key is Manager_ID because it uniquely identifies each manager.
+* VARCHAR was used for ID and manager’s name because character length can vary.
+* NOT NULL specifies that each manager must be associated with a Manager_ID and Manager_Name.
+
+#### Table Population
+
+``` mysql
+
+-- Populate Manager Table
+INSERT INTO Manager VALUES
+    ('M-01', 'Arthur Nweke'),
+    ('M-02', 'Chidinma Oloni'),
+    ('M-03', 'Nitsa Ning'),
+    ('M-04', 'Kevin Hong'),
+    ('M-05', 'Faizah Sani'),
+    ('M-06', 'Jude Chris'),
+    ('M-07', 'Mike Ohis'),
+    ('M-08', 'Chrystal Green'),
+    ('M-09', 'Pamela Okenwa'),
+    ('M-10', 'Ogonna Uzo');
+
+```
+<img width="150" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/1ba2673e-645c-43c8-b4be-72f342f3b4c3">
+
+### 3.5.  Create Driving License table 
+
+<img width="149" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/177b38fd-aff2-492c-b37e-ffa9894c8fa9">
+
+#### Data Types and Constraints
+* The Primary Key is License_ID because it uniquely identifies each driver’s license.
+* VARCHAR was used because character lengths can vary.
+* NOT NULL specifies that each driver’s license must be associated with an ID and expiry date. 
+
+#### Table Population
+
+``` mysql
+
+-- Populate Driving_License Table
+INSERT INTO Driving_License VALUES
+    ('DL-12345', '2020-05-10', 'UK', '2025-05-10'),
+    ('DL-67890', '2019-08-20', 'UK', '2024-08-20'),
+    ('DL-12875', '2020-05-18', 'UK', '2025-05-18'),
+    ('DL-97854', '2019-09-28', 'UK', '2024-09-28'),
+    ('DL-56394', '2020-01-10', 'USA', '2025-01-10'),
+    ('DL-23876', '2019-01-20', 'UK', '2024-01-20'),
+    ('DL-12376', '2020-05-01', 'USA', '2025-05-01'),
+    ('DL-67871', '2019-08-05', 'UK', '2024-08-05'),
+    ('DL-89764', '2020-03-10', 'Canada', '2025-03-10'),
+    ('DL-32123', '2019-02-20', 'UK', '2024-02-20')
+    ;
+
+```
+
+<img width="202" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/b57f8328-2a38-448e-9d90-800fbd409c15">
+
+
+### 3.6.  Create Vehicle Table 
+
+<img width="151" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/b54ae7a8-e08f-4f71-9e68-a711981debdb">
+
+#### Data Types and Constraints
+* The Primary Key is Vehicle_ID because it uniquely identifies each vehicle/motorcycle.
+* VARCHAR was used to store values of variable character length.
+* NOT NULL specifies that each vehicle must be associated with a vehicle_id and registration_number.
+* Decimals are allowed for engine size, but they will be rounded to 2 decimal points.
+
+#### Table population
+
+``` mysql
+
+-- Populate Vehicle Table
+INSERT INTO Vehicle VALUES
+
+    (1, 'AB-193', 'Red', '2022-01-15', 1.687),
+    (2, 'CD-456', 'Blue', '2019-11-20', 2.0),
+    (3, 'FF-123', 'Black', '2023-06-15', 1.678),
+    (4, 'PO-470', 'White', '2021-05-20', 2.09),
+    (5, 'HS-763', 'Red', '2022-01-15', 2.67),
+    (6, 'TM-336', 'Grey', '2021-11-25', 2.08),
+    (7, 'WS-111', 'Black', '2022-01-18', 1.0),
+    (8, 'LK-326', 'White', '2022-11-20', 2.70),
+    (9, 'WS-111', 'Black', '2022-01-09', 1.9),
+    (10, 'LK-326', 'White', '2022-11-04', 2.18);
+
+```
+
+<img width="214" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/e2ffbdfa-0ee4-4eba-817e-c4e799c2fca2">
