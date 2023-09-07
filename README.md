@@ -245,3 +245,207 @@ INSERT INTO Vehicle VALUES
 ```
 
 <img width="214" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/e2ffbdfa-0ee4-4eba-817e-c4e799c2fca2">
+
+### 3.7.  Drivers Table Creation
+
+<img width="205" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/a9992d85-425b-4cb5-8cfe-aa443ccc1fba">
+
+#### Data Types and Constraints
+* The Primary key is Driver_ID because it uniquely identifies each driver employed by Kanagaroo.
+* The Foreign Keys are Manager_ID, Restaurant_ID, Vehicle_ID and License_ID. They establish a relationship between their table and the Driver table. For example, 
+ Manager_ID establishes a relationship between drivers and managers whereby each driver is assigned to a manager.
+* NOT NULL specifies that every driver must be associated with a Driver_ID, Driver_Name, Restaurant_ID, Manager_ID, Vehicle_ID and License_ID.
+* VARCHAR was used to store values of variable length.
+
+#### Table Population
+``` mysql
+
+-- Populate Drivers Table
+INSERT INTO Drivers VALUES
+    ('DR-01', 'Jennifer Anniston', 'jenny.a@gmail.com', 3000.00, 'R-201', 'M-01', 1, 'DL-12345'),
+    ('DR-02', 'Barrack Obama', 'barryo@yahoo.com', 2800, 'R-202', 'M-02', 2, 'DL-12376'),
+    ('DR-03', 'Shonda Rhimes', 'shonda.r@yahoo.com', 3100.1, 'R-203', 'M-03', 3, 'DL-12875'),
+    ('DR-04', 'Bill Gates', 'billyg@yahoo.com', 2800.40, 'R-204', 'M-04', 4, 'DL-23876'),
+    ('DR-05', 'Elon Musk', 'elonmusk@yahoo.com', 2800, 'R-201', 'M-05', 5, 'DL-32123'),
+    ('DR-06', 'Steve Jobbs', 'steviej@rocketmail.com', 2890.90, 'R-206', 'M-06', 6, 'DL-56394'),
+    ('DR-07', 'Oprah Winfrey', 'oprah.w@yahoo.com', 2400.0, 'R-207', 'M-07', 7, 'DL-67871'),
+    ('DR-08', 'Margaret Thatcher', 'maggie.t@gmail.com', 2230.00, 'R-208', 'M-03', 8, 'DL-67890'),
+    ('DR-09', 'Bill Clinton', 'bill.clinton@gmail.com', 2230.00, 'R-202', 'M-02', 9, 'DL-89764'),
+    ('DR-10', 'Michael Jackson', 'michael.j@yahoo.com', 2800.00, 'R-210', 'M-01', 10, 'DL-97854');
+
+```
+
+<img width="399" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/6b4e4cc7-e1cb-4a80-9561-32902e0b0077">
+
+### 3.8.   Orders Table Creation
+
+<img width="327" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/72588ead-8db9-45f8-a599-7cda3cbd7c09">
+
+#### Data Types and Constraints
+* The Primary Key is Order_ID because it uniquely identifies each order. Its’ data type is CHAR (10), and it stores a maximum length of 10 characters.
+* NOT NULL specifies that every order must be associated with a customer_ID, Restaurant_ID, Item_ID, Driver_ID.
+* The default CURRENT_TIMESTAMP specifies that the current date and time must be assigned to the Order Date column when a new order is placed or entered.
+* Order_Amount can allow decimals with a maximum of 8 digits and 2 decimal places.
+* A foreign key constraint on Customer_ID establishes a relationship between customer and orders table, whereby each order_ID must be assigned to a customer_ID.
+* ON DELETE CASCADE specifies that if a customer is deleted, all orders associated with that customer will be deleted.
+
+
+#### Table Population
+
+``` mysql
+
+-- Populate Orders Table
+INSERT INTO Orders VALUES
+    ('OR-101', '2023-02-01', 20, 'C-01', 101, 'R-201','DR-01'),
+    ('OR-102', '2023-02-02', 30.5, 'C-02', 102, 'R-202', 'DR-02'),
+    ('OR-103', '2023-02-06', 25.1, 'C-01', 101, 'R-203', 'DR-03'),
+    ('OR-104', '2023-02-06', 17.0, 'C-03', 103, 'R-203', 'DR-03'),
+    ('OR-105', '2023-02-10', 20, 'C-04', 104, 'R-204', 'DR-04'),
+    ('OR-106', '2023-02-11', 15.50, 'C-05', 105, 'R-205', 'DR-05'),
+    ('OR-107', '2023-02-12', 50, 'C-06', 106, 'R-206', 'DR-06'),
+    ('OR-108', '2023-02-13', 40.60, 'C-01', 107, 'R-207', 'DR-07'),
+    ('OR-109', '2023-02-13', 15.99, 'C-07', 108, 'R-207', 'DR-07'),
+    ('OR-110', '2023-02-13', 12.5, 'C-08', 109, 'R-208', 'DR-08');
+
+```
+
+<img width="318" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/0ecf5bf9-dc39-4b67-bc26-75394f29da20">
+
+
+### 3.9.   Payroll Table Creation
+
+<img width="224" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/90cd5d6b-0ce1-46bd-a62b-d3cccb658a0a">
+
+#### Data Types and Constraints
+* The Primary Key is Payroll_ID because it uniquely identifies each payroll.
+* NOT NULL specifies that each payroll_ID is associated with a driver ID and National insurance number.
+* The foreign key is Driver_ID. It establishes a relationship between driver table and payroll table. Each payroll_ID must be assigned to a driver_ID.
+
+#### Table Population
+
+``` mysql
+
+-- Populate Payroll Table
+INSERT INTO Payroll VALUES
+    ('P-101', 'DR-01', 'NI123456'),
+    ('P-102', 'DR-02', 'NI789012'),
+    ('P-103', 'DR-03', 'NI123456'),
+    ('P-104', 'DR-04', 'NI309012'),
+    ('P-105', 'DR-05', 'NI709456'),
+    ('P-106', 'DR-06', 'NI430012'),
+    ('P-107', 'DR-07', 'NI009656'),
+    ('P-108', 'DR-08', 'NI907612'),
+    ('P-109', 'DR-09', 'NI887656'),
+    ('P-110', 'DR-10', 'NI112912');
+
+```
+
+<img width="153" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/6cd565b3-d84e-4afc-9481-615625dc95d3">
+
+
+## 4.   Application of Database Design to Business Processes
+
+This Kangaroo database can be used to create, read, update and delete data for business needs.
+
+### 4.1.   Business Case 1: Update Customer Table
+* Update the email address of customer with ID ‘C-01’ from kelechi.u@yahoo.com to kelechi94@gmail.com.
+* Add a new customer to the database.
+
+``` mysql
+
+-- Update Customer table
+    UPDATE Customers
+    SET Customers.Email = 'kelechi94@gmail.com'
+    WHERE Customer_ID = 'C-01';
+    
+-- Add a new customer to customer table
+    INSERT INTO Customers VALUES  
+    ('C-11', 'Saber', 'Farag', 'saber.farag@ymail.co.uk', '07898453109');
+
+```
+<img width="290" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/130cd678-89f9-4383-9524-d97e87c9e69d">
+
+
+The UPDATE statement is used to update records in the customer table. The SET statement changes the email address in the Email column. The WHERE clause specifies that only the row where the customer ID is ‘C-01’ will be updated. The INSERT INTO clause adds a new customer with ID ‘C-11’ to the customer table.
+
+### 4.2.	   Business Case 2: Most Popular Restaurant
+Find the restaurant with the most orders.
+
+``` mysql
+
+SELECT r.Restaurant_ID,
+r.Restaurant_Name,
+COUNT(o.Order_ID) AS Total_Orders
+FROM Restaurants r
+LEFT JOIN Orders o
+ON r.Restaurant_ID = o.Restaurant_ID
+GROUP BY r.Restaurant_ID, r.Restaurant_Name
+ORDER BY Total_Orders DESC;
+
+```
+
+<img width="273" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/3dc4cbd8-f187-48bc-a06f-458f3839ca12">
+
+The restaurants with the most orders are Wendys and Green Kitchen with two orders each. Papa Johns and Subway have zero orders.
+The COUNT function counts the number of orders for each restaurant and labels it Total_Orders. The LEFT JOIN clause includes all restaurants in the restaurant table, even if they have no orders. The ON condition creates a relationship between both tables through the Restaurant_ID. The GROUP BY clause groups the result by restaurant ID and restaurant name. The ORDER BY clause orders the results by Total_Orders in descending order.
+
+
+### 4.3.  Business Case 3: Busiest Day of the Week
+
+Find the busiest day of the week. This can be done by extracting the day from date.
+
+``` mysql
+
+SELECT TOP 1
+DATENAME (weekday, Order_Date) AS Busiest_Day,
+COUNT(*) AS Total_Orders
+FROM Orders
+GROUP BY DATENAME (weekday, Order_Date)
+ORDER BY Total_Orders DESC;
+
+```
+
+<img width="232" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/1342dba4-eb32-4e0d-ac7e-e2761b0ae8af">
+
+The busiest day of the week is Monday. The COUNT function counts the total orders received each day and labels it as Total_Orders. The DATENAME function extracts the name of the week from order_date. The TOP 1 constraint only returns the first row. The results are GROUPED BY the weekday.
+
+### 4.4.  Business Case 4: Most Frequent Customer
+
+``` mysql
+
+SELECT 
+c.Customer_ID,
+c.First_Name,
+COUNT(o.Order_ID) AS Total_Orders
+FROM Customers c
+LEFT JOIN Orders o
+ON c.Customer_ID = o.Customer_ID
+GROUP BY c.Customer_ID, c.First_Name
+ORDER BY Total_Orders DESC;
+
+```
+
+<img width="208" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/3d2f8dce-e3c2-451e-a566-7473e21d13aa">
+
+The most frequent customer is Kelechi with a total of 3 orders. Ken, Chinwe and Saber have zero orders. 
+
+### 4.5.  Business Case 5: Busiest Driver
+
+``` mysql
+
+SELECT 
+    d.Driver_ID, 
+    d.Driver_Name,
+    COUNT(o.Order_ID) AS Total_Orders
+FROM 
+    Drivers d 
+    LEFT JOIN Orders o
+ON 
+    d.Driver_ID = o.Driver_ID
+GROUP BY d.Driver_ID, d.Driver_Name
+ORDER BY Total_Orders DESC;
+
+```
+<img width="182" alt="image" src="https://github.com/kelechiu/Relational_Database_Design_SQL/assets/100145388/10b11a60-fddb-4013-83f5-acef9ddd6e1f">
+
+The busiest drivers are Shonda Rhimes and Oprah Winfrey with 2 orders each. The LEFT JOIN clause ensures all drivers are included in the results, even those without orders. It joins both driver and orders table through their driver_ID. The COUNT function counts the total number of order_id for all drivers and labels it as Total_Orders. The ORDER BY clause orders the result by Total-orders in descending order.
